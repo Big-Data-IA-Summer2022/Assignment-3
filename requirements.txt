@@ -3,7 +3,7 @@ keras==2.9.0
 numpy==1.23.1
 pandas==1.4.3
 Pillow==9.2.0
-protobuf==4.21.2
+protobuf
 pydantic==1.9.1
 python-dotenv==0.20.0
 scikit_image==0.19.3
