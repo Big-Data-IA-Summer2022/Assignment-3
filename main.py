@@ -1,15 +1,12 @@
 import os
 from typing import Union
 import uvicorn
-import logging
 import pandas as pd
 from fastapi import FastAPI, File, UploadFile
-from keras.models import Sequential, load_model
+from keras.models import load_model
 from PIL import Image
 import numpy as np
 from skimage import transform
-from pydantic import BaseModel
-import tensorflow as ts
 from io import BytesIO
 from starlette.responses import RedirectResponse
 import sys
