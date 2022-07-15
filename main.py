@@ -44,6 +44,7 @@ def read_imagefile(file) -> Image.Image:
         image = Image.open(BytesIO(file))
     except Exception as e:
         logging.error(f"Unable to read the image file, Please check if the image file ends with jpeg,jpg or png")
+        logfunc('internal read image function',100)
         return 100
     return image
     
@@ -62,23 +63,27 @@ async def predict(file: UploadFile = File(...),get_current_user: schemas.Service
         np_image = np.expand_dims(np_image, axis=0)
     except Exception as e:
         logging.error(f"Numpy unable to process the image")
-        return 100
+        logfunc("/predict_with_augmented_data_trained_model",100)
+        return 100,"Numpy unable to process the image"
     image = np_image
     try:
         aughdf5=os.path.join(sys.path[0], "cnn_casting_inspection_model.hdf5")
         model= load_model(aughdf5)
     except Exception as e:
         logging.error(f"Unable to read the model")
-        return 100
+        logfunc("/predict_with_augmented_data_trained_model",100)
+        return 100,"Unable to read the model"
     try:
         ypred= model.predict(image)
     except Exception as e:
         logging.error(f"Model not able to make prediction on given image")
-        return 100
+        logfunc("/predict_with_augmented_data_trained_model",100)
+        return 100, "Model not able to make prediction on given image"
     if ypred<0.5:
         result='ok'
     else:
         result='defect'
+    logfunc("/predict_with_augmented_data_trained_model",200)
     return result
 
 @app.post("/predict_with_non_augmented_data_trained_model")
@@ -90,24 +95,28 @@ async def predict(file: UploadFile = File(...),get_current_user: schemas.Service
         np_image = np.expand_dims(np_image, axis=0)
     except Exception as e:
         logging.error(f"Numpy unable to process the image")
-        return 100
+        logfunc("/predict_with_non_augmented_data_trained_model",100)
+        return 100, "Numpy unable to process the image"
     image = np_image
     try:
         nonaughdf5=os.path.join(sys.path[0], "cnn_casting_inspection_modelnonaug.hdf5")
         model= load_model(nonaughdf5)
     except Exception as e:
         logging.error(f"Unable to read the model")
-        return 100
+        logfunc("/predict_with_non_augmented_data_trained_model",100)
+        return 100,"Unable to read the model"
     try:
         ypred= model.predict(image)
     except Exception as e:
         logging.error(f"Model not able to make prediction on given image")
-        return 100
+        logfunc("/predict_with_non_augmented_data_trained_model",100)
+        return 100, "Model not able to make prediction on given image"
     print(ypred)
     if ypred>0.5:
         result='ok'
     else:
         result='defect'
+    logfunc("/predict_with_augmented_data_trained_model",200)
     return result
 
 

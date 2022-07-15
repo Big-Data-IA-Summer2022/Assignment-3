@@ -18,4 +18,3 @@ def logfunc(endpoint:str, response_code: int):
         print("New rows have been added.")
     else:
         print("Encountered errors while inserting rows: {}".format(errors))
-
