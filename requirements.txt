@@ -6,7 +6,7 @@ Pillow
 python-dotenv
 scikit_image
 starlette
-tensorflow
+tensorflow-cpu
 protobuf
 pydantic
 uvicorn
