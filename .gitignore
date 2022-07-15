@@ -127,11 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
 .DS_Store
 API/.env
 spyplane
 .vscode
-Dash/*
-API/*
-key
+
