@@ -11,10 +11,8 @@ import json
 import schemas
 from routers.oaut2 import get_current_user
 from fastapi import FastAPI,status,HTTPException
-
 from typing import Union
 import uvicorn
-
 from keras.models import load_model
 from PIL import Image
 import numpy as np
@@ -35,7 +33,7 @@ logging.basicConfig(
 ###########################################################################
 
 app_desc = """<h2>Try this app by uploading any image with `predict/image`</h2>
-<h2>Defect and non defect checker for manufacture parts api - it is just a learning app demo</h2>"""
+<h2>Defect and non defect checker for manufacture parts api</h2>"""
 
 
 app = FastAPI(title='Abhi', description=app_desc)
@@ -66,8 +64,6 @@ async def predict(file: UploadFile = File(...),get_current_user: schemas.Service
     else:
         result='defect'
     return {result}
-
-
 
 @app.post("/predict_with_non_augmented_data_trained_model")
 async def predict(file: UploadFile = File(...),get_current_user: schemas.ServiceAccount = Depends(get_current_user)):
