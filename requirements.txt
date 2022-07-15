@@ -11,3 +11,4 @@ protobuf
 pydantic
 uvicorn
 gunicorn
+python-multipart
