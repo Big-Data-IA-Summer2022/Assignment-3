@@ -43,20 +43,16 @@ app = FastAPI(title='Abhi', description=app_desc)
 def read_imagefile(file) -> Image.Image:
     image = Image.open(BytesIO(file))
     return image
-
-@app.get("/Login here:")
-def login(get_current_user: schemas.ServiceAccount = Depends(get_current_user)):
-    return {"Hello Python"}
-
+    
 #app.include_router(data.router)
-app.include_router(users.router)
+#app.include_router(users.router)
 app.include_router(authentication.router)
 #app.mount("/", StaticFiles(directory="ui", html=True), name="ui")
 
 models.Base.metadata.create_all(bind=engine)
 
 @app.post("/predict_with_augmented_data_trained_model")
-async def predict(file: UploadFile = File(...)):
+async def predict(file: UploadFile = File(...),get_current_user: schemas.ServiceAccount = Depends(get_current_user)):
     image = read_imagefile(await file.read())
     np_image = np.array(image).astype('float32')/255
     np_image = transform.resize(np_image, (300, 300, 1))
@@ -74,7 +70,7 @@ async def predict(file: UploadFile = File(...)):
 
 
 @app.post("/predict_with_non_augmented_data_trained_model")
-async def predict(file: UploadFile = File(...)):
+async def predict(file: UploadFile = File(...),get_current_user: schemas.ServiceAccount = Depends(get_current_user)):
     image = read_imagefile(await file.read())
     np_image = np.array(image).astype('float32')/255
     np_image = transform.resize(np_image, (300, 300, 1))
@@ -91,8 +87,8 @@ async def predict(file: UploadFile = File(...)):
     return {result}
 
 
-@app.get("/", include_in_schema=False)
-async def index():
+@app.get("/")
+async def index(get_current_user: schemas.ServiceAccount = Depends(get_current_user)):
     return RedirectResponse(url="/docs")
 
 
