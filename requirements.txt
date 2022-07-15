@@ -8,6 +8,6 @@ pydantic
 python-dotenv
 scikit_image
 starlette
-tensorflow
+tensorflow-cpu
 unicorn
 gunicorn
