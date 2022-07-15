@@ -20,6 +20,7 @@ from skimage import transform
 from io import BytesIO
 from starlette.responses import RedirectResponse
 import sys
+from logfunc import logfunc
 ##########################################################################
 
 load_dotenv()
