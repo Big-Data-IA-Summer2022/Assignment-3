@@ -12,3 +12,10 @@ pydantic
 uvicorn
 gunicorn
 python-multipart
+pytest
+pyarrow
+ipykernel
+sqlalchemy
+passlib
+python-jose
+bcrypt
