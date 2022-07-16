@@ -116,7 +116,7 @@ async def predict(file: UploadFile = File(...),get_current_user: schemas.Service
         result='ok'
     else:
         result='defect'
-    logfunc("/predict_with_augmented_data_trained_model",200)
+    logfunc("/predict_with_non_augmented_data_trained_model",200)
     return result
 
 
