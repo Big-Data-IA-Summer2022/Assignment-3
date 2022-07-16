@@ -47,6 +47,7 @@ if st.session_state['if_logged'] == True:
     app.add_app("Home", home.app)
     app.add_app("non-aug", nonaug.app)
     app.add_app("aug", aug.app)
+    app.add_app('logs', logs.app)
     # The main app
     app.run()
 
