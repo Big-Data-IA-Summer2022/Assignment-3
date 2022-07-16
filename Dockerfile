@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8078
 
-CMD ["streamlit", "run", "main.py", "--server.port", "8078"]
+CMD ["streamlit", "run", "main.py", "--server.port", "8080"]
