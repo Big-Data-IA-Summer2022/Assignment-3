@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] =  os.getenv('SERVICE_ACCOUNT_KEY')
 def queries():
     client = bigquery.Client()
     df = client.query(f"""SELECT * FROM `defect-detection-356414.for_logs.logs` order by logid desc""").to_dataframe()
