@@ -4,7 +4,7 @@ import requests
 import os
 import json
 from main_page import MultiApp
-from pages import home, nonaug, aug # import your app modules here
+from pages import home, nonaug, aug, logs # import your app modules here
 
 st.set_page_config(page_title="Manufacture parts defect prediction Dashboard", page_icon=":bowtie:", layout="wide", initial_sidebar_state="collapsed")
 
