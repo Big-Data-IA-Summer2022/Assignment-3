@@ -1,0 +1,4 @@
+Pillow
+protobuf
+requests
+google-cloud-bigquery==2.34.1
