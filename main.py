@@ -4,7 +4,7 @@ import requests
 import os
 import json
 from main_page import MultiApp
-from pages import home, nonaug, aug, logs # import your app modules here
+from pages import home, nonaug, aug, logs, confusion # import your app modules here
 
 st.set_page_config(page_title="Manufacture parts defect prediction Dashboard", page_icon=":bowtie:", layout="wide", initial_sidebar_state="collapsed")
 
@@ -48,6 +48,7 @@ if st.session_state['if_logged'] == True:
     app.add_app("non-aug", nonaug.app)
     app.add_app("aug", aug.app)
     app.add_app('logs', logs.app)
+    app.add_app('confusion', confusion.app)
     # The main app
     app.run()
 
